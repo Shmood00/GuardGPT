@@ -1,4 +1,4 @@
-# Why not enter sensitive information to Large Language Models?
+# Why not enter sensitive information into Large Language Models?
 With the world being encapsulated with the rise of large language models (LLMs) like ChatGPT, the concerns around user privacy has never been more important.
 
 While  LLMs are extremely useful, it is imperitive the information users feed them isn't sensitive. The primary reason for this is a tale as old as time **Data Breaches**.
