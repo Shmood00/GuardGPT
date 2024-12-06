@@ -24,7 +24,7 @@ The HTML and JavaScript files are hosted locally using Python Flask. SocketIO is
 
 If Microsoft Presidio classifies any of the data being entered as sensitive, it will anonymize it using the format "\<CATEGORY>", where "CATEGORY" is tne entity detect (i.e. PERSON, EMAIL, CREDIT_CARD, etc.). If there is anonymized data in the string the user has typed, they will not be able to submit the data to the LLM.
 
-Data from the textarea is being sent to the Ollama LLM that's running locally (instructions for installing Ollama can be found on their official [GitHub](https://github.com/ollama/ollama)) . The speed in Ollama's responses is dependant on the resources allocated to the model and the computer thats hosting its processing power.
+Data from the textarea is being sent to the Ollama LLM that's running locally (instructions for installing Ollama can be found on their official [GitHub](https://github.com/ollama/ollama). The speed in Ollama's responses is dependant on the resources allocated to the model and the computer thats hosting its processing power.
 
 # GuardGPT In Action
 Below is an example of GuardGPT in action.
