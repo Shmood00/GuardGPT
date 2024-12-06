@@ -77,3 +77,45 @@ If you would like to install and test this out it can be done quite simply. I re
 
 5. Open your local webbrowser and direct yourself to `http://localhost:5000/`
 6. Type someting into the textarea and see what happens!
+
+## Optional Steps
+Optionally, you can enable SSL on the application to ensure all communications between the client and server are secure.
+
+1. Generate selg signed SSL certificates
+
+   On Linux this can be done with `openssl`:
+   ```
+   openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -sha256 -days 365
+   ```
+   During the certificate creation process ou will be asked for a password (for the private key - this password should be kept in an offline, secure location) along with a series of other questions:
+
+   ```
+   Enter PEM pass phrase: <enter secure password>
+   Verifying - Enter PEM pass pharse: <enter secure pssword again>
+   -----
+   You are about to be asked to enter information that will be incorporated
+   into your new certificate request.
+   What you are about to enter is what is called a Distingished Name or a DN.
+   There are quite a few fields but you can leave some blank
+   For some fields there will be a default value,
+   If you enter '.', the field eill be left blank.
+   -----
+   Country Name (2 letter code) [CA]: <enter 2 letter country code>
+   State or Province Name [Alberta]: <enter state or province name>
+   Locality Name [Calgary]: <enter city name>
+   Organization Name []: <enter organization name>
+   Organizational Unit Name []: <enter organizational unit name>
+   Common Name [home.local]: <enter local FQDN>
+   Email Address []: <enter email address>	
+   ```
+   When complete - check the folder you create the certificates in, you should see `key.pem` and `cert.pem`. Your private key is located in the `key.pem` file, this should securely stored and never shared with anyone, `cert.pem` is the actual certificate file.
+
+   2. Within `app.py`, modify line 84 to use your newly generated certificate:
+   ```
+   if __name__ == "__main__":
+   	socketio.run(app, debug=True, ssl_context('cert.pem', 'key.pem'))
+   ```
+   Passing in the `ssl_context()` parameter tells the server to use the newly generated certificate and secures communication between the client and the server.
+
+   The next time you run `python3 app.py`, you will be asked to enter in the PEM password you created while generating the certificate. Once entered, you can navigate to `https://localhost:5000/`. Enjoy using GuardGPT with the addition of SSL!
+
