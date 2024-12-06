@@ -22,7 +22,7 @@ GuardGPT is built using the following technologies:
 
 The HTML and JavaScript files are hosted locally using Python Flask. SocketIO is used for the creation of web sockets that are used to send the user inputted data back and forth between the server (Flask) and client (Browser). When visiting the webpage, the user is greeted with a textarea to enter their text into. As the user types, their keystrokes are sent to the server where Microsoft Presidio analyzes the text, anonymizes it (if needed) and sends it back to the client and updates the text in the textarea, all of this happens in realtime.
 
-If Microsoft Presidio classifies any of the data being entered as sensitive, it will anonymize it using the format "\<CATEGORY>", where "CATEGORY" is tne entity detect (i.e. PERSON, EMAIL, CREDIT_CARD, etc.). If there is anonymized data in the string the user has typed, they will not be able to submit the data to the LLM.
+If Microsoft Presidio classifies any of the data being entered as sensitive, it will anonymize it using the format "\<CATEGORY>", where "CATEGORY" is the entity detected (i.e. PERSON, EMAIL, CREDIT_CARD, etc.). If there is anonymized data in the string the user has typed, they will not be able to submit the data to the LLM.
 
 Data from the textarea is being sent to the Ollama LLM that's running locally (instructions for installing Ollama can be found on their official [GitHub](https://github.com/ollama/ollama). The speed in Ollama's responses is dependant on the resources allocated to the model and the computer thats hosting its processing power.
 
